@@ -1,0 +1,149 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+.logo img {
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav a {
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--muted);
+  transition: color 0.2s ease;
+  position: relative;
+}
+.nav a:hover {
+  color: var(--ink);
+}
+.nav a.active {
+  color: var(--ink);
+}
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--terra);
+  border-radius: 2px;
+}
+
+.cta {
+  color: #fff !important;
+}
+.cta::after {
+  display: none !important;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.signout {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--terra);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+.signout:hover {
+  color: #9c2f1c;
+}
+
+.toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+}
+.toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: 0.25s;
+}
+.toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 720px) {
+  .toggle {
+    display: flex;
+  }
+  .nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px 20px;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.22s ease;
+  }
+  .navOpen {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav a {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav a.active::after {
+    display: none;
+  }
+  .cta {
+    margin-top: 12px;
+    text-align: center;
+  }
+}

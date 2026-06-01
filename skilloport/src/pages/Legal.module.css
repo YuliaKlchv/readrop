@@ -1,0 +1,89 @@
+.layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 90px;
+}
+.tab {
+  text-align: left;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  color: var(--muted);
+  transition: all 0.18s ease;
+}
+.tab:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+.active {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.content {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 44px;
+  box-shadow: var(--shadow-sm);
+  min-height: 400px;
+}
+.panel {
+  animation: fade 0.25s ease;
+}
+.panel h2 {
+  font-size: 1.9rem;
+  margin-bottom: 18px;
+}
+.panel h3 {
+  font-size: 1.12rem;
+  margin: 24px 0 6px;
+  color: var(--ink);
+}
+.panel p {
+  color: var(--muted);
+  margin-bottom: 12px;
+  max-width: 56em;
+}
+.panel strong {
+  color: var(--ink);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: static;
+  }
+  .content {
+    padding: 28px 22px;
+  }
+}

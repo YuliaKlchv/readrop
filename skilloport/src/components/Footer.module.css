@@ -1,0 +1,64 @@
+.footer {
+  background: var(--ink);
+  color: var(--cream);
+  padding-top: 56px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
+}
+
+.brand {
+  max-width: 22em;
+}
+.logo {
+  display: block;
+}
+.brand p {
+  color: rgba(250, 247, 242, 0.6);
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+.cols {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.col h4 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(250, 247, 242, 0.5);
+  margin-bottom: 4px;
+}
+.col a {
+  color: rgba(250, 247, 242, 0.78);
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+.col a:hover {
+  color: var(--cream);
+}
+
+.base {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  border-top: 1px solid rgba(250, 247, 242, 0.12);
+  font-size: 0.85rem;
+  color: rgba(250, 247, 242, 0.5);
+}

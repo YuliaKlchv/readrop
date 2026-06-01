@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skilloport-backend
+  labels:
+    app: skilloport-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: skilloport-backend
+  template:
+    metadata:
+      labels:
+        app: skilloport-backend
+    spec:
+      containers:
+        - name: backend
+          # Build & push this image first (see Jenkinsfile / docker build).
+          image: skilloport-backend:1.0.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: postgres
+            - name: PORT
+              value: "3000"
+            - name: DB_HOST
+              value: skilloport-db
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: skilloport-db
+                  key: POSTGRES_DB
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: skilloport-db
+                  key: POSTGRES_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: skilloport-db
+                  key: POSTGRES_PASSWORD
+            - name: COOKIE_SECURE
+              value: "true"
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "384Mi"
+            limits:
+              cpu: "1"
+              memory: "768Mi"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 3000
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 3000
+            initialDelaySeconds: 40
+            periodSeconds: 15
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: skilloport-backend
+  labels:
+    app: skilloport-backend
+spec:
+  selector:
+    app: skilloport-backend
+  ports:
+    - port: 80
+      targetPort: 3000
