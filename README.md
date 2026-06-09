@@ -1,25 +1,26 @@
-# SkillOport
+# Readrop
 
-SkillOport is a full-stack project for a weekly creative micro-skill platform.
+Readrop is a free book giveaway platform — list the books you've finished and let
+someone nearby take them for free.
+
 This repository contains both:
 
 - a React/Vite frontend
 - a Java Spring Boot backend
 
-The frontend and backend are kept in separate folders, but they belong to the
-same application and share the same `/api` contract.
+The frontend and backend are kept in separate folders but share the same `/api` contract.
 
 ## Repository Structure
 
 ```text
 SkillOport/
-├── skilloport/          # Frontend: React + Vite
-└── skilloport-backend/  # Backend: Java 21 + Spring Boot + Maven
+├── readrop/          # Frontend: React + Vite
+└── readrop-backend/  # Backend: Java 21 + Spring Boot + Maven
 ```
 
 ## Frontend
 
-Location: `skilloport/`
+Location: `readrop/`
 
 Main technologies:
 
@@ -30,7 +31,7 @@ Main technologies:
 
 What it does:
 
-- renders the public website
+- renders the public website (Home, Browse books, Give a book)
 - handles signup/login/register/admin UI flows
 - calls the backend through `/api`
 - falls back to a browser demo mode if no backend is running
@@ -38,7 +39,7 @@ What it does:
 Frontend quick start:
 
 ```bash
-cd skilloport
+cd readrop
 npm install
 npm run dev
 ```
@@ -47,7 +48,7 @@ The frontend runs on `http://localhost:5173/`.
 
 ## Backend
 
-Location: `skilloport-backend/`
+Location: `readrop-backend/`
 
 Main technologies:
 
@@ -64,35 +65,34 @@ What it does:
 
 - exposes the `/api` endpoints used by the frontend
 - handles authentication with JWT in an httpOnly cookie
-- stores users and subscriber leads
+- stores users, book listings, and claim requests
 - protects admin-related API routes
 - provides tests, Docker support, and deployment configs
 
 Backend quick start:
 
 ```bash
-cd skilloport-backend
+cd readrop-backend
 mvn spring-boot:run
 ```
 
 The backend runs on `http://localhost:3000/`.
 
-This backend project is intended to be opened directly in IntelliJ as a Maven
-project.
+Open `readrop-backend/` directly in IntelliJ as a Maven project.
 
 ## Run The Full App Locally
 
 1. Start the backend:
 
 ```bash
-cd skilloport-backend
+cd readrop-backend
 mvn spring-boot:run
 ```
 
 2. Start the frontend in a second terminal:
 
 ```bash
-cd skilloport
+cd readrop
 npm install
 npm run dev
 ```
@@ -106,10 +106,10 @@ npm run dev
 
 When the backend seeds demo data, you can use:
 
-- Email: `demo@skilloport.app`
-- Password: `SkillOportDemo123!`
+- Email: `demo@readrop.app`
+- Password: `ReadropDemo123!`
 
 ## More Details
 
-- Frontend notes: [skilloport/README.md](skilloport/README.md)
-- Backend details: [skilloport-backend/README.md](skilloport-backend/README.md)
+- Frontend notes: [readrop/README.md](readrop/README.md)
+- Backend details: [readrop-backend/README.md](readrop-backend/README.md)

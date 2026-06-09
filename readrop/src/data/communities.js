@@ -1,0 +1,121 @@
+export const COMMUNITIES = [
+  {
+    id: "sci-fi-universe",
+    emoji: "🚀",
+    name: "Sci-Fi Universe",
+    tagline: "Galaxies, timelines, impossible machines.",
+    description:
+      "From Asimov to Sanderson — explore the far future, alternate realities, and technology that shouldn't exist yet. No spoilers (well, try).",
+    genre: "Sci-Fi",
+    members: 1240,
+    active: true,
+    colorVar: "indigo",
+    threads: [
+      { title: "What's the best hard sci-fi of the last decade?", replies: 34, hot: true },
+      { title: "Dune vs Foundation — which world would you live in?", replies: 21 },
+      { title: "Currently reading: Project Hail Mary 🙌", replies: 48, hot: true },
+    ],
+  },
+  {
+    id: "classics-corner",
+    emoji: "🎩",
+    name: "Classics Corner",
+    tagline: "Demode ama muhteşem.",
+    description:
+      "Austen, Tolstoy, Dostoyevsky, Dickens — the reads that have been around for centuries and still hit harder than most new releases.",
+    genre: "Classics",
+    members: 876,
+    active: false,
+    colorVar: "gold",
+    threads: [
+      { title: "Starting Anna Karenina — send help 😅", replies: 18 },
+      { title: "Best translation of Crime & Punishment?", replies: 29, hot: true },
+      { title: "Are classics actually readable or do we just pretend?", replies: 61, hot: true },
+    ],
+  },
+  {
+    id: "non-fiction-nerds",
+    emoji: "🧠",
+    name: "Non-Fiction Nerds",
+    tagline: "Reading to understand the world.",
+    description:
+      "Biographies, science, psychology, economics — if it happened or can be proven, it belongs here. Bring citations.",
+    genre: "Non-Fiction",
+    members: 2103,
+    active: true,
+    colorVar: "forest",
+    threads: [
+      { title: "Sapiens changed my view on civilization — anyone else?", replies: 55, hot: true },
+      { title: "Best books on cognitive bias?", replies: 23 },
+      { title: "Just finished 'The Body' — Bryson is unbeatable", replies: 12 },
+    ],
+  },
+  {
+    id: "dystopia-club",
+    emoji: "🌑",
+    name: "Dystopia Club",
+    tagline: "Reality is just fiction with worse UI.",
+    description:
+      "1984, Brave New World, The Handmaid's Tale — dark futures, authoritarian states, and uncomfortable questions about where we're heading.",
+    genre: "Dystopia",
+    members: 642,
+    active: true,
+    colorVar: "terra",
+    threads: [
+      { title: "Is 1984 or Brave New World closer to now?", replies: 87, hot: true },
+      { title: "Hidden gems: underrated dystopian novels", replies: 19 },
+      { title: "Rereading Fahrenheit 451 in 2025 hits differently", replies: 33 },
+    ],
+  },
+  {
+    id: "science-readers",
+    emoji: "🔬",
+    name: "Science Readers",
+    tagline: "Making the complex beautiful.",
+    description:
+      "Popular science, cosmology, biology, physics. Carl Sagan's children, all of us.",
+    genre: "Science",
+    members: 519,
+    active: false,
+    colorVar: "teal",
+    threads: [
+      { title: "Carl Sagan still the GOAT of science writing?", replies: 42 },
+      { title: "Recommendations after A Brief History of Time?", replies: 38, hot: true },
+      { title: "Is 'The Gene' by Mukherjee worth it?", replies: 11 },
+    ],
+  },
+  {
+    id: "modern-fiction",
+    emoji: "✨",
+    name: "Modern Fiction",
+    tagline: "Life as it actually is right now.",
+    description:
+      "Contemporary novels that get under your skin. Sally Rooney, Douglas Stuart, Ocean Vuong — authors writing the present tense.",
+    genre: "Fiction",
+    members: 1589,
+    active: true,
+    colorVar: "rose",
+    threads: [
+      { title: "Normal People is overhyped — change my mind", replies: 71, hot: true },
+      { title: "Best debut novels of 2024?", replies: 26 },
+      { title: "Is literary fiction becoming too self-aware?", replies: 44 },
+    ],
+  },
+  {
+    id: "philosophy-room",
+    emoji: "🤔",
+    name: "Philosophy Room",
+    tagline: "Questions that don't have answers (yet).",
+    description:
+      "Stoicism, existentialism, ethics, metaphysics. Argue in good faith. Change your mind sometimes.",
+    genre: "Philosophy",
+    members: 388,
+    active: true,
+    colorVar: "indigo",
+    threads: [
+      { title: "Meditations as daily practice — how do you use it?", replies: 31 },
+      { title: "Nietzsche is misunderstood — a thread", replies: 64, hot: true },
+      { title: "Best intro to Stoicism that isn't self-help fluff?", replies: 27 },
+    ],
+  },
+];

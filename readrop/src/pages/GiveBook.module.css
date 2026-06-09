@@ -1,0 +1,133 @@
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.opt {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 0.98rem;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--cream);
+  color: var(--ink);
+  width: 100%;
+  transition: border-color 0.18s;
+  box-sizing: border-box;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--terra);
+  box-shadow: 0 0 0 3px rgba(200, 67, 43, 0.12);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.error {
+  color: var(--terra);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.segmented {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.seg {
+  flex: 1;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 10px 12px;
+  background: var(--cream);
+  color: var(--muted);
+  border: none;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.seg:last-child {
+  border-right: none;
+}
+.seg:hover {
+  background: #fff;
+  color: var(--ink);
+}
+
+.segActive {
+  background: var(--ink);
+  color: var(--cream);
+}
+.segActive:hover {
+  background: #2c2010;
+  color: var(--cream);
+}
+
+.segActiveBlue {
+  background: var(--indigo);
+  color: #fff;
+}
+.segActiveBlue:hover {
+  background: var(--indigo-dark);
+  color: #fff;
+}
+
+.segActiveTeal {
+  background: var(--teal);
+  color: #fff;
+}
+.segActiveTeal:hover {
+  background: var(--teal-dark);
+  color: #fff;
+}
+
+@media (max-width: 560px) {
+  .form {
+    padding: 24px 20px;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

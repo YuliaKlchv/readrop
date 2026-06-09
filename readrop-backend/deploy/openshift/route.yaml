@@ -1,0 +1,16 @@
+# OpenShift Route exposing the backend Service over HTTPS (edge termination).
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: readrop-backend
+  labels:
+    app: readrop-backend
+spec:
+  to:
+    kind: Service
+    name: readrop-backend
+  port:
+    targetPort: 3000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

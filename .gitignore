@@ -11,10 +11,10 @@
 .idea/
 *.iml
 
-skilloport/node_modules/
-skilloport/dist/
-skilloport/data/
+readrop/node_modules/
+readrop/dist/
+readrop/data/
 
-skilloport-backend/target/
-skilloport-backend/data/
-skilloport-backend/.idea/
+readrop-backend/target/
+readrop-backend/data/
+readrop-backend/.idea/

@@ -1,0 +1,80 @@
+// Declarative Jenkins pipeline for the Readrop backend.
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk-21'
+        maven 'maven-3.9'
+    }
+
+    options {
+        timestamps()
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '20'))
+    }
+
+    environment {
+        IMAGE = "readrop-backend:${env.BUILD_NUMBER}"
+        // Configure these in Jenkins credentials / global config.
+        SONAR_HOST_URL = 'http://sonarqube:9000'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -B -ntp clean compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn -B -ntp test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Checkstyle') {
+            steps {
+                sh 'mvn -B -ntp checkstyle:checkstyle'
+            }
+            post {
+                always {
+                    recordIssues(tools: [checkStyle(pattern: 'target/checkstyle-result.xml')])
+                }
+            }
+        }
+
+        stage('SonarQube') {
+            when { branch 'main' }
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh 'mvn -B -ntp verify sonar:sonar -Dsonar.host.url=$SONAR_HOST_URL'
+                }
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn -B -ntp -DskipTests package'
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+
+        stage('Docker image') {
+            when { branch 'main' }
+            steps {
+                sh 'docker build -t $IMAGE .'
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

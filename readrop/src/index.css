@@ -1,0 +1,231 @@
+/* ============================================================
+   Readrop — global design system (tokens, reset, primitives)
+   Component/page-specific styling lives in *.module.css files.
+   ============================================================ */
+
+:root {
+  --cream: #faf7f2;
+  --paper: #f0ebe0;
+  --ink: #1a1208;
+  --terra: #c8432b;
+  --terra-light: #fdf3f0;
+  --forest: #3d6b3a;
+  --forest-light: #edf7ec;
+  --gold: #d4900c;
+  --muted: #7a6852;
+  --border: #ddd5c8;
+  --admin-dark: #1a2035;
+
+  /* New accent colors */
+  --indigo: #6366f1;
+  --indigo-dark: #4f46e5;
+  --indigo-light: #eef2ff;
+  --teal: #0d9488;
+  --teal-dark: #0f766e;
+  --teal-light: #f0fdfa;
+  --rose: #e11d48;
+  --rose-light: #fff1f2;
+
+  --radius: 14px;
+
+  --shadow-sm: 0 2px 8px rgba(26, 18, 8, 0.06);
+  --shadow-md: 0 10px 30px rgba(26, 18, 8, 0.1);
+  --shadow-lg: 0 24px 60px rgba(26, 18, 8, 0.16);
+  --maxw: 1140px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Fraunces", Georgia, serif;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ---------- Shared layout primitives ---------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.text-terra {
+  color: var(--terra);
+}
+
+/* ---------- Shared buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease;
+  white-space: nowrap;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-terra {
+  background: var(--terra);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-terra:hover {
+  background: #b13a25;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ink {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn-ink:hover {
+  background: #2c2010;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--ink);
+  background: rgba(26, 18, 8, 0.03);
+}
+
+.btn-indigo {
+  background: var(--indigo);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-indigo:hover {
+  background: var(--indigo-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-teal {
+  background: var(--teal);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-teal:hover {
+  background: var(--teal-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-sm {
+  padding: 9px 18px;
+  font-size: 0.9rem;
+}
+.btn-block {
+  width: 100%;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Shared eyebrow + section heads ---------- */
+.eyebrow {
+  display: inline-block;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terra);
+  background: var(--terra-light);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 36em;
+  margin: 0 auto 50px;
+}
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 14px;
+}
+.section-lead {
+  color: var(--muted);
+  font-size: 1.12rem;
+}
+
+.page-head {
+  max-width: 40em;
+  margin-bottom: 44px;
+}
+.page-head h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  margin-bottom: 14px;
+}

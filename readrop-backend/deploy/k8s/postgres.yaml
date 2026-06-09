@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: readrop-db
+type: Opaque
+stringData:
+  POSTGRES_DB: readrop
+  POSTGRES_USER: readrop
+  POSTGRES_PASSWORD: change-me-in-prod
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: readrop-db
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readrop-db
+  labels:
+    app: readrop-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readrop-db
+  template:
+    metadata:
+      labels:
+        app: readrop-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          envFrom:
+            - secretRef:
+                name: readrop-db
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+          readinessProbe:
+            exec:
+              command: ["pg_isready", "-U", "readrop", "-d", "readrop"]
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: readrop-db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: readrop-db
+spec:
+  selector:
+    app: readrop-db
+  ports:
+    - port: 5432
+      targetPort: 5432

@@ -1,0 +1,332 @@
+/* ---- Hero ---- */
+.hero {
+  background: radial-gradient(900px 400px at 70% -20%, var(--indigo-light), transparent 60%),
+    radial-gradient(700px 350px at -10% 120%, var(--teal-light), transparent 55%),
+    var(--cream);
+  padding: 70px 0 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.heroInner {
+  max-width: 700px;
+}
+
+.heroTitle {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 18px;
+  line-height: 1.1;
+}
+
+.heroAccent {
+  color: var(--indigo);
+}
+
+.heroSub {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 38em;
+  line-height: 1.7;
+}
+
+/* ---- Auth banner ---- */
+.authBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--indigo-light);
+  border: 1px solid var(--indigo);
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 28px;
+  font-size: 0.92rem;
+  color: var(--indigo-dark);
+  font-weight: 500;
+}
+
+/* ---- Filters ---- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.filter {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: #fff;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+.filter:hover {
+  border-color: var(--indigo);
+  color: var(--indigo);
+}
+.active {
+  background: var(--indigo);
+  color: #fff;
+  border-color: var(--indigo);
+}
+
+/* ---- Grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* ---- Card ---- */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-top: 4px solid var(--accent, var(--indigo));
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px 22px 18px;
+  position: relative;
+}
+
+.clubEmoji {
+  font-size: 2.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.clubHead {
+  flex: 1;
+}
+
+.clubName {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.clubTagline {
+  font-size: 0.83rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.activeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2); }
+  50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.1); }
+}
+
+.cardBody {
+  padding: 0 22px 16px;
+  flex: 1;
+}
+
+.clubDesc {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.cardStats {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.statIcon {
+  font-size: 0.9rem;
+}
+
+.threadToggle {
+  background: none;
+  border: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent, var(--indigo));
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.15s;
+}
+.threadToggle:hover {
+  opacity: 0.75;
+}
+
+.chevron {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  transform: rotate(90deg);
+}
+.chevronUp {
+  font-size: 1.1rem;
+  display: inline-block;
+  transform: rotate(-90deg);
+  transition: transform 0.2s ease;
+}
+
+.threads {
+  list-style: none;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.thread {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.thread:last-child {
+  border-bottom: none;
+}
+
+.threadTitle {
+  flex: 1;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.hotTag {
+  margin-right: 4px;
+}
+
+.threadReplies {
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* ---- Footer ---- */
+.cardFooter {
+  padding: 14px 22px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.joinBtn {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 11px 24px;
+  border-radius: 999px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  width: 100%;
+}
+.joinBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.joined {
+  font-weight: 700;
+}
+
+/* ---- Thread content & translate button ---- */
+.threadContent {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.translateBtn {
+  flex-shrink: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.translateBtn:hover:not(:disabled) {
+  border-color: var(--indigo);
+  color: var(--indigo);
+  background: var(--indigo-light);
+}
+.translateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.translateActive {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: var(--teal-light);
+}
+
+/* ---- Empty ---- */
+.empty {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
