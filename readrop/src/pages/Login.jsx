@@ -9,7 +9,7 @@ export default function Login() {
   const { signIn, mode } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/admin";
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,6 +61,7 @@ export default function Login() {
           </label>
           <input
             id="login-email"
+            data-testid="login-email"
             type="email"
             autoComplete="email"
             className={styles.input}
@@ -74,6 +75,7 @@ export default function Login() {
           </label>
           <input
             id="login-password"
+            data-testid="login-password"
             type="password"
             autoComplete="current-password"
             className={styles.input}
@@ -86,7 +88,7 @@ export default function Login() {
             <Link to="/forgot">Forgot password?</Link>
           </div>
 
-          <button type="submit" className="btn btn-terra btn-block" disabled={busy}>
+          <button type="submit" data-testid="login-submit" className="btn btn-terra btn-block" disabled={busy}>
             {busy ? "Signing in…" : "Log in"}
           </button>
         </form>

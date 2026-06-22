@@ -338,6 +338,28 @@
   gap: 12px;
 }
 
+.claimOk {
+  background: var(--forest-light, #e6f4e6);
+  border: 1px solid var(--forest, #3d6b3a);
+  color: var(--forest, #3d6b3a);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.claimWarn {
+  background: #fdf4e0;
+  border: 1px solid #e5c06a;
+  color: #7a5a10;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .inner {

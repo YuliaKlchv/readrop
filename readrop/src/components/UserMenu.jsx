@@ -69,7 +69,7 @@ export default function UserMenu() {
             {unread > 0 && <span className={styles.badge}>{unread > 9 ? "9+" : unread}</span>}
           </Link>
 
-          <Link to="/admin" className={styles.item} onClick={close} role="menuitem">
+          <Link to="/dashboard" className={styles.item} onClick={close} role="menuitem">
             <span className={styles.itemIcon}>📊</span>
             <span>{t.nav.dashboard}</span>
           </Link>

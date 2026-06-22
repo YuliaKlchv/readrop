@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet, useLocation } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
@@ -56,13 +56,14 @@ export default function App() {
         </Route>
 
         <Route
-          path="/admin"
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Admin />
             </ProtectedRoute>
           }
         />
+        <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
 
         <Route path="*" element={<Home />} />
       </Routes>

@@ -46,7 +46,48 @@ public class DemoSeeder {
                     demo.getId()));
             books.save(new Book("Dune", "Frank Herbert",
                     "Sci-Fi", "GOOD", null, "Munich", demo.getId()));
-            log.info("Seeded 4 demo book listings");
+
+            books.save(new Book("The Midnight Library", "Matt Haig",
+                    "Fiction", "GOOD",
+                    "A clean copy for someone who enjoys emotional and thoughtful fiction.",
+                    "Vienna", demo.getId()));
+
+            books.save(new Book("Atomic Habits", "James Clear",
+                    "Self-Improvement", "GREAT",
+                    "Lightly used copy. A practical book about building better habits.",
+                    "Vienna", demo.getId()));
+
+            books.save(new Book("The Alchemist", "Paulo Coelho",
+                    "Fiction", "GOOD",
+                    "Small paperback edition, easy to carry and perfect for a quick inspiring read.",
+                    "Vienna", demo.getId()));
+
+            books.save(new Book("Clean Code", "Robert C. Martin",
+                    "Technology", "WORN",
+                    "Used developer book with some notes inside. Helpful for beginner software developers.",
+                    "Vienna", demo.getId()));
+
+            books.save(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling",
+                    "Fantasy", "GOOD",
+                    "English edition with a slightly worn cover, but all pages are complete.",
+                    "Vienna", demo.getId()));
+
+            books.save(new Book("Die Verwandlung", "Franz Kafka",
+                    "Classic", "GOOD",
+                    "A short German classic in good readable condition.",
+                    "Vienna", demo.getId()));
+
+            books.save(new Book("Pride and Prejudice", "Jane Austen",
+                    "Classic", "GREAT",
+                    "Nice edition for readers who enjoy classic literature and social drama.",
+                    "Vienna", demo.getId()));
+
+            books.save(new Book("To Kill a Mockingbird", "Harper Lee",
+                    "Classic", "GOOD",
+                    "Readable English classic, suitable for literature lovers.",
+                    "Vienna", demo.getId()));
+
+            log.info("Seeded 12 demo book listings");
         };
     }
 }

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "./BookCard.module.css";
 import { CONDITION_LABELS, CONDITION_COLORS, GENRE_COLORS } from "../data/books.js";
 
@@ -10,7 +11,7 @@ export default function BookCard({ book, onClaim }) {
     : "linear-gradient(135deg, var(--terra-light), var(--forest-light))";
 
   return (
-    <article className={styles.card}>
+    <article className={styles.card} data-testid="book-card">
       <div className={styles.cover} style={{ background: coverBg }}>
         <span className={styles.emoji}>{book.emoji || "📚"}</span>
         <div className={styles.badges}>
@@ -38,6 +39,7 @@ export default function BookCard({ book, onClaim }) {
           {onClaim && (
             <button
               type="button"
+              data-testid="claim-book-button"
               className={`btn btn-terra btn-sm ${styles.claim}`}
               onClick={() => onClaim(book)}
             >
@@ -49,3 +51,16 @@ export default function BookCard({ book, onClaim }) {
     </article>
   );
 }
+
+BookCard.propTypes = {
+  book: PropTypes.shape({
+    title:     PropTypes.string.isRequired,
+    author:    PropTypes.string.isRequired,
+    genre:     PropTypes.string,
+    condition: PropTypes.string,
+    city:      PropTypes.string,
+    emoji:     PropTypes.string,
+    exchange:  PropTypes.bool,
+  }).isRequired,
+  onClaim: PropTypes.func,
+};

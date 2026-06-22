@@ -58,7 +58,7 @@ export default function GiveBook() {
           <p className="section-lead">{tg.sub}</p>
         </div>
 
-        <form className={styles.form} onSubmit={onSubmit} noValidate>
+        <form className={styles.form} onSubmit={onSubmit} noValidate data-testid="give-book-form">
           <div className={styles.row}>
             <label className={styles.field}>
               <span className={styles.label}>{tg.title}</span>

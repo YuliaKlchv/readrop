@@ -1,61 +1,34 @@
 import { createContext, useContext, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../lib/api.js";
 import { isValidEmail, suggestEmail } from "../lib/validation.js";
 import styles from "./SignupModal.module.css";
 
 const Ctx = createContext(null);
 export const useSignupModal = () => useContext(Ctx);
 
-/*
- * "Start free" gate. Free signup isn't a free pass — we ask for at least an
- * email (strictly validated) before sending the user on to the thank-you page.
- */
 export function SignupModalProvider({ children }) {
   const dialogRef = useRef(null);
   const [email, setEmail] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [submitError, setSubmitError] = useState("");
   const navigate = useNavigate();
 
   const open = () => {
     setEmail("");
-    setSubmitError("");
-    setBusy(false);
     dialogRef.current?.showModal();
   };
   const close = () => {
-    setSubmitError("");
-    setBusy(false);
     dialogRef.current?.close();
   };
 
   const valid = isValidEmail(email);
   const suggestion = suggestEmail(email);
   const invalidEmail = email.length > 0 && !valid;
-  const error = submitError || (invalidEmail ? "Please enter a valid email address" : "");
+  const error = invalidEmail ? "Please enter a valid email address" : "";
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (!valid || busy) return;
-    setSubmitError("");
-    setBusy(true);
-
-    try {
-      const res = await api("subscribe", { email: email.trim() });
-      if (res.status !== 200) {
-        setSubmitError(res.data?.error || "Could not save your email. Please try again.");
-        setBusy(false);
-        return;
-      }
-    } catch {
-      setSubmitError("Couldn't reach the server. Please try again.");
-      setBusy(false);
-      return;
-    }
-
+    if (!valid) return;
     close();
-    navigate("/thank-you");
+    navigate(`/register?email=${encodeURIComponent(email.trim())}`);
   };
 
   const value = useMemo(() => ({ open }), []);
@@ -72,7 +45,8 @@ export function SignupModalProvider({ children }) {
         <button type="button" className={styles.close} aria-label="Close" onClick={close}>
           ×
         </button>
-        <h2 id="signup-modal-title" className={styles.title}>Get your first skill video free</h2>
+        <h2 id="signup-modal-title" className={styles.title}>Join Readrop for free</h2>
+        <p className={styles.subtitle}>Start sharing books with readers in your city.</p>
         <form onSubmit={onSubmit} noValidate>
           <input
             className={styles.input}
@@ -81,10 +55,7 @@ export function SignupModalProvider({ children }) {
             autoComplete="email"
             aria-label="Email address"
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              if (submitError) setSubmitError("");
-            }}
+            onChange={(e) => setEmail(e.target.value)}
           />
           {error && <p className={styles.error}>{error}</p>}
           {!error && suggestion && (
@@ -95,11 +66,11 @@ export function SignupModalProvider({ children }) {
               </button>?
             </p>
           )}
-          <button type="submit" className="btn btn-terra btn-block" disabled={!valid || busy}>
-            {busy ? "Saving…" : "Get started free →"}
+          <button type="submit" className="btn btn-terra btn-block" disabled={!valid}>
+            Create free account →
           </button>
         </form>
-        <p className={styles.note}>No credit card. Cancel anytime.</p>
+        <p className={styles.note}>Always free · No shipping · Local pickups</p>
       </dialog>
     </Ctx.Provider>
   );

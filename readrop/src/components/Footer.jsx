@@ -28,7 +28,7 @@ export default function Footer() {
           <div className={styles.col}>
             <h4>Say hi</h4>
             <a href="mailto:hello@readrop.app">hello@readrop.app</a>
-            <Link to="/admin">Admin</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </div>
         </div>
       </div>
