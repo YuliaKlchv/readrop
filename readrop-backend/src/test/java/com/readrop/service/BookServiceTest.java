@@ -63,6 +63,17 @@ class BookServiceTest {
     }
 
     @Test
+    void createBook_defaults_condition_to_good_when_missing() {
+        when(books.save(any(Book.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Book saved = bookService.createBook(1L,
+                new CreateBookRequest("Dune", "Frank Herbert", "Sci-Fi", null, " ", "Munich"));
+
+        assertThat(saved.getCondition()).isEqualTo("GOOD");
+        assertThat(saved.getDescription()).isNull();
+    }
+
+    @Test
     void claimBook_marks_book_claimed_and_saves_claim() {
         Book book = new Book("Title", "Author", "Genre", "GOOD", null, "City", 2L);
         when(books.findById(10L)).thenReturn(Optional.of(book));
@@ -96,5 +107,15 @@ class BookServiceTest {
                 .isInstanceOf(ApiException.class)
                 .extracting(e -> ((ApiException) e).getStatus())
                 .isEqualTo(HttpStatus.CONFLICT);
+    }
+
+    @Test
+    void claimBook_rejects_unknown_book() {
+        when(books.findById(999L)).thenReturn(Optional.empty());
+
+        assertThatThrownBy(() -> bookService.claimBook(999L, 5L, null))
+                .isInstanceOf(ApiException.class)
+                .extracting(e -> ((ApiException) e).getStatus())
+                .isEqualTo(HttpStatus.NOT_FOUND);
     }
 }

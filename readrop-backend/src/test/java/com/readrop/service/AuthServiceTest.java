@@ -122,4 +122,21 @@ class AuthServiceTest {
                 .isInstanceOf(ApiException.class)
                 .hasMessage("Invalid email or password");
     }
+
+    @Test
+    void login_rejects_blank_password_without_repository_lookup() {
+        assertThatThrownBy(() -> authService.login(new LoginRequest("bob@example.com", " ")))
+                .isInstanceOf(ApiException.class)
+                .hasMessage("Invalid email or password");
+
+        verify(users, never()).findByEmail(anyString());
+    }
+
+    @Test
+    void requireUser_rejects_missing_uid() {
+        assertThatThrownBy(() -> authService.requireUser(null))
+                .isInstanceOf(ApiException.class)
+                .extracting(e -> ((ApiException) e).getStatus())
+                .isEqualTo(HttpStatus.UNAUTHORIZED);
+    }
 }

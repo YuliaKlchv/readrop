@@ -12,7 +12,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  min-height: 88px;
+  padding-block: 6px;
 }
 
 .logo {
@@ -21,32 +22,41 @@
 }
 .logo img {
   display: block;
+  width: auto;
+  height: auto;
+  max-height: 112px;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 18px;
 }
 .nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
   font-weight: 500;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   color: var(--muted);
-  transition: color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
   position: relative;
 }
 .nav a:hover {
   color: var(--ink);
+  background: rgba(200, 67, 43, 0.08);
 }
 .nav a.active {
-  color: var(--ink);
+  color: var(--terra);
 }
 .nav a.active::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
   height: 2px;
   background: var(--terra);
   border-radius: 2px;
@@ -111,7 +121,7 @@
   padding: 8px;
 }
 .toggle span {
-  width: 24px;
+  width: 22px;
   height: 2px;
   background: var(--ink);
   border-radius: 2px;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
-/** Admin view: registered users. Requires an authenticated session. */
+/** Authenticated subscriber list endpoint. It is not role-restricted yet. */
 @RestController
 @RequestMapping("/api")
 public class SubscribersController {

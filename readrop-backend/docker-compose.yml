@@ -24,17 +24,20 @@ services:
       dockerfile: Dockerfile
     environment:
       SPRING_PROFILES_ACTIVE: postgres
-      DB_HOST: db
-      DB_PORT: "5432"
-      DB_NAME: readrop
-      DB_USER: readrop
-      DB_PASSWORD: readrop
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/readrop
+      SPRING_DATASOURCE_USERNAME: readrop
+      SPRING_DATASOURCE_PASSWORD: readrop
       PORT: "3000"
+      APP_SEED_DEMO: "true"
+      APP_DATA_DIR: /app/data
     ports:
       - "3000:3000"
+    volumes:
+      - appdata:/app/data
     depends_on:
       db:
         condition: service_healthy
 
 volumes:
   pgdata:
+  appdata:

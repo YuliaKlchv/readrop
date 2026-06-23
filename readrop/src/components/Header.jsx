@@ -22,8 +22,8 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.logo} onClick={close} aria-label="Readrop home">
-          <img src="/logo.svg" alt="Readrop" height={36} />
+        <Link to="/" className={styles.logo} onClick={close} aria-label="Home">
+          <img src="/logo.png" alt="Logo" height={120} />
         </Link>
 
         <button

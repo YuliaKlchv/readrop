@@ -383,7 +383,7 @@ export async function api(route, body) {
       method: body ? "POST" : "GET",
       headers: body ? { "Content-Type": "application/json" } : undefined,
       body: body ? JSON.stringify(body) : undefined,
-      credentials: "same-origin",
+      credentials: "include",
     });
 
     if (shouldUseDemoFallback(res)) {

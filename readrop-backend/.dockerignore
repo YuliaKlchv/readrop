@@ -1,7 +1,6 @@
 target/
 data/
-*.iml
-.idea/
 .git/
-.gitignore
-README.md
+.idea/
+.DS_Store
+test-documentation/

@@ -7,7 +7,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:cucumber": "cucumber-js --config cucumber.cjs",
+    "test:e2e": "HEADLESS=true cucumber-js --config e2e/config.js",
+    "test:e2e:headed": "HEADLESS=false cucumber-js --config e2e/config.js",
+    "test:jasmine": "jasmine --config=spec/support/jasmine.json",
+    "test:selenium:login": "node e2e/login.selenium.cjs",
+    "test:selenium:login:headed": "HEADLESS=false node e2e/login.selenium.cjs",
+    "show:automation": "HEADLESS=false STEP_DELAY_MS=1200 KEEP_OPEN_MS=5000 node e2e/login.selenium.cjs",
+    "show:login-fill": "HEADLESS=false FILL_ONLY=true STEP_DELAY_MS=1200 KEEP_OPEN_MS=20000 node e2e/login.selenium.cjs"
   },
   "dependencies": {
     "prop-types": "^15.8.1",
@@ -16,7 +24,11 @@
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^12.9.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "jasmine": "^4.5.0",
+    "playwright": "^1.61.1",
+    "selenium-webdriver": "^4.15.0",
     "vite": "^5.4.8"
   }
 }

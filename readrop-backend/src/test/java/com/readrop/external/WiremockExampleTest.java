@@ -26,7 +26,8 @@ class WiremockExampleTest {
 
     @BeforeEach
     void start() {
-        wireMock = new WireMockServer(options().dynamicPort());
+        // Bind to localhost so the test works in restricted environments too.
+        wireMock = new WireMockServer(options().bindAddress("127.0.0.1").dynamicPort());
         wireMock.start();
     }
 

@@ -55,7 +55,7 @@ export default function Admin() {
         <div className={styles.header}>
           <div className={`container ${styles.headerInner}`}>
             <span className={styles.logo}>
-              <img src="/logo-light.svg" alt="Readrop" height={26} /> <em>Dashboard</em>
+              <img src="/logo.png" alt="Logo" height={42} /> <em>Dashboard</em>
             </span>
             <div className={styles.headerRight}>
               <nav className={styles.quickNav} aria-label="Dashboard quick links">

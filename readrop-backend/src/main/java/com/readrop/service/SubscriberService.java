@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Comparator;
 import java.util.List;
 
-/** Admin view: list all registered users. */
+/** Subscriber list for authenticated frontend views. No role filter is enforced yet. */
 @Service
 public class SubscriberService {
 

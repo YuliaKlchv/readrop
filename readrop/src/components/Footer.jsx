@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <img src="/logo-light.svg" alt="Readrop" height={28} className={styles.logo} />
+          <img src="/logo.png" alt="Logo" height={42} className={styles.logo} />
           <p>Give your read books a new home.</p>
         </div>
 

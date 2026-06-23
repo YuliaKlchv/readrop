@@ -29,9 +29,10 @@ public class JwtService {
 
     public JwtService(
             @Value("${app.data-dir}") String dataDir,
+            @Value("${app.jwt.secret:}") String configuredSecret,
             @Value("${app.jwt.expires-days}") long expiresDays) {
         this.expiresMs = expiresDays * 24L * 60L * 60L * 1000L;
-        this.key = Keys.hmacShaKeyFor(loadOrCreateSecret(Path.of(dataDir)));
+        this.key = Keys.hmacShaKeyFor(resolveSecret(configuredSecret, Path.of(dataDir)));
         log.info("JWT service initialized (HS256)");
     }
 
@@ -57,6 +58,13 @@ public class JwtService {
         }
     }
 
+    private static byte[] resolveSecret(String configuredSecret, Path dataDir) {
+        if (configuredSecret != null && !configuredSecret.isBlank()) {
+            return validateSecret(configuredSecret.trim().getBytes(StandardCharsets.UTF_8));
+        }
+        return loadOrCreateSecret(dataDir);
+    }
+
     private static byte[] loadOrCreateSecret(Path dataDir) {
         try {
             Files.createDirectories(dataDir);
@@ -71,15 +79,18 @@ public class JwtService {
                 Files.writeString(secretFile, secret, StandardCharsets.UTF_8);
                 trySetOwnerReadWrite(secretFile);
             }
-            byte[] bytes = secret.getBytes(StandardCharsets.UTF_8);
-            if (bytes.length < 32) {
-                throw new IllegalStateException(
-                        ".jwtsecret must be at least 32 bytes for HS256; got " + bytes.length);
-            }
-            return bytes;
+            return validateSecret(secret.getBytes(StandardCharsets.UTF_8));
         } catch (Exception e) {
             throw new IllegalStateException("Could not load/create JWT secret", e);
         }
+    }
+
+    private static byte[] validateSecret(byte[] bytes) {
+        if (bytes.length < 32) {
+            throw new IllegalStateException(
+                    "JWT secret must be at least 32 bytes for HS256; got " + bytes.length);
+        }
+        return bytes;
     }
 
     private static void trySetOwnerReadWrite(Path file) {

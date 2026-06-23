@@ -1,0 +1,16 @@
+services:
+  backend:
+    build:
+      context: ./readrop-backend
+    container_name: readrop-backend
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./readrop
+    container_name: readrop-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend

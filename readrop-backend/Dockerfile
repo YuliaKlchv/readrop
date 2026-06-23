@@ -26,7 +26,8 @@ COPY --from=build /workspace/target/readrop-backend-*.jar app.jar
 
 ENV PORT=3000 \
     SPRING_PROFILES_ACTIVE=postgres \
-    APP_DATA_DIR=/app/data
+    APP_DATA_DIR=/app/data \
+    APP_SEED_DEMO=false
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \

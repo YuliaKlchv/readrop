@@ -19,7 +19,7 @@ public class DemoSeeder {
 
     private static final Logger log = LoggerFactory.getLogger(DemoSeeder.class);
 
-    private static final String DEMO_NAME = "Demo Admin";
+    private static final String DEMO_NAME = "Demo User";
     private static final String DEMO_EMAIL = "demo@readrop.app";
     private static final String DEMO_PASSWORD = "ReadropDemo123!";
     private static final String DEMO_CITY = "Berlin";

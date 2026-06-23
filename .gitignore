@@ -1,28 +1,25 @@
+# Shared ignore rules for the whole monorepo
+
 # macOS
 .DS_Store
 
-# Node / React
+# Frontend / Node
 node_modules/
-readrop/node_modules/
 dist/
-readrop/dist/
+
+# Environment files
 .env
-.env.local
-.env.*.local
 .env.*
 
-# Java / Spring Boot
+# Java / JVM build output
 target/
-readrop-backend/target/
+*.class
 *.log
 
-# IntelliJ
+# IDEs
 .idea/
-readrop-backend/.idea/
-*.iml
-
-# VS Code
 .vscode/
+*.iml
 
 # Security / secrets
 *.pem
@@ -31,11 +28,11 @@ readrop-backend/.idea/
 *.jks
 *.keystore
 
-# H2 / local db
+# Local databases
 *.db
 *.mv.db
 *.trace.db
 
-# Local data dirs
-readrop/data/
-readrop-backend/data/
+# Local app data
+/readrop/data/
+/readrop-backend/data/
